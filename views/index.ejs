@@ -1,0 +1,25 @@
+<%- include("header") -%>
+<body>
+    <div class="box" id="heading">
+        <h1><%= dayOfWeek %></h1>
+    </div>
+    <div class="box">
+            <% for(let i=0;i<itemList.length;i++){ %>
+                <form action="/delete" method="post">
+                <div class="item">
+                <input type="checkbox" name="check1" value="<%=itemList[i].name%>" onChange="this.form.submit()">
+                <p><%=itemList[i].name%></p>
+                </div>
+                <input type="hidden" name="listname" value="<%=dayOfWeek%>" onChange="this.form.submit()">
+            </form>
+                <%}%>
+    </div>
+    <div class="box">
+        <form class="item" action="/" method="post">
+            <input type="text" name="newItem" placeholder="New Item">
+            <button name="listName" value="<%=dayOfWeek%>">+</button>
+        </form> 
+    </div>
+</body>
+<%- include("footer") -%>
+</html>
